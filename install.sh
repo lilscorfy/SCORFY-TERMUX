@@ -23,11 +23,11 @@ pkg install figlet nmap hydra -y
 
 # Download and setup SCORFY
 mkdir -p $PREFIX/bin
-curl -o $PREFIX/bin/scorfy.sh https://raw.githubusercontent.com/lilscorfy/scorfy-termux/main/scorfy.sh
+curl -o $PREFIX/bin/scorfy.sh https://raw.githubusercontent.com/lilscorfy/SCORFY-TERMUX/main/scorfy.sh
 chmod +x $PREFIX/bin/scorfy.sh
 
 # Create a command shortcut
-echo "bash ~/scorfy.sh" > $PREFIX/bin/scorfy
+echo "bash $PREFIX/bin/scorfy.sh" > $PREFIX/bin/scorfy
 chmod +x $PREFIX/bin/scorfy
 
 echo -e "\e[1;32mInstallation Complete! Run 'scorfy' to start.\e[0m"
