@@ -12,7 +12,7 @@ if [[ "$USERNAME" == "$GITHUB_USER" ]]; then
     echo -e "\e[1;32mYou are the owner! Skipping the check.\e[0m"
 else
     # Fetch user's following list and check if they follow you
-    FOLLOWING=$(curl -s "https://api.github.com/users/$USERNAME/following" | grep -o "\"login\": \"$GITHUB_USER\"")
+    FOLLOWING=$(curl -s "https://api.github.com/users/$USERNAME/following" | jq -r ".[].login" | grep -w "$GITHUB_USER")
 
     if [[ -z "$FOLLOWING" ]]; then
         echo -e "\e[1;31mYou are not following @$GITHUB_USER on GitHub. Please follow and try again.\e[0m"
