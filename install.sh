@@ -5,8 +5,8 @@ GITHUB_USER="lilscorfy"
 echo -e "\e[1;32mChecking if you follow @$GITHUB_USER on GitHub...\e[0m"
 
 # Ask for GitHub username
-read -p "Enter your GitHub username: " USERNAME
-echo DEBUG: Entered USERNAME='lilscorfy' (length=9)
+read -p "Enter your GitHub username: " lilscorfy
+echo DEBUG: USERNAME=lilscorfy (length=9)
 
 if [[ "$USERNAME" == "lilscorfy" ]]; then
     echo -e "\e[1;32mYou are the owner! Skipping the check.\e[0m"
