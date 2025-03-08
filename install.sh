@@ -8,18 +8,18 @@ echo -e "\e[1;32mChecking if you follow @$GITHUB_USER on GitHub...\e[0m"
 read -p "Enter your GitHub username: " USERNAME
 
 # Skip the check if the user is the owner
-if [[ "$USERNAME" == "$GITHUB_USER" ]]; then
+if [[ "$USERNAME" == "lilscorfy" ]]; then
     echo -e "\e[1;32mYou are the owner! Skipping the check.\e[0m"
 else
-    # Fetch user's following list and check if they follow you
-    FOLLOWING=$(curl -s "https://api.github.com/users/$USERNAME/following" | jq -r ".[].login" | grep -w "$GITHUB_USER")
+    # Proceed with the following check
+    FOLLOWING=$(curl -s "https://api.github.com/users/$USERNAME/following" | jq -r ".[].login" | grep -w "lilscorfy")
 
     if [[ -z "$FOLLOWING" ]]; then
-        echo -e "\e[1;31mYou are not following @$GITHUB_USER on GitHub. Please follow and try again.\e[0m"
+        echo -e "\e[1;31mYou are not following @lilscorfy on GitHub. Please follow and try again.\e[0m"
         exit 1
     fi
 
-    echo -e "\e[1;32mVerified! You follow @$GITHUB_USER. Installing SCORFY-Termux...\e[0m"
+    echo -e "\e[1;32mVerified! You follow @lilscorfy. Installing SCORFY-Termux...\e[0m"
 fi
 
 # Update and install dependencies
