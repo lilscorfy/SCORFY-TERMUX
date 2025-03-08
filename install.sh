@@ -35,4 +35,4 @@ chmod +x $PREFIX/bin/scorfy.sh
 echo "bash $PREFIX/bin/scorfy.sh" > $PREFIX/bin/scorfy
 chmod +x $PREFIX/bin/scorfy
 
-echo -e "\e[1;32mInstallation Complete! Run 'scorfy' to start.\e[0m"
+echo -e "\e[1;32mInstallation Complete! Run 'scorfy' to start.\e[0m" 
