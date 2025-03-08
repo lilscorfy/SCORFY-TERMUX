@@ -7,15 +7,20 @@ echo -e "\e[1;32mChecking if you follow @$GITHUB_USER on GitHub...\e[0m"
 # Ask for GitHub username
 read -p "Enter your GitHub username: " USERNAME
 
-# Fetch user's following list and check if they follow you
-FOLLOWING=$(curl -s "https://api.github.com/users/$USERNAME/following" | grep -o "\"login\": \"$GITHUB_USER\"")
+# If the user is the owner, skip the check
+if [[ "$USERNAME" == "$GITHUB_USER" ]]; then
+    echo -e "\e[1;32mYou are the owner! Skipping the check.\e[0m"
+else
+    # Fetch user's following list and check if they follow you
+    FOLLOWING=$(curl -s "https://api.github.com/users/$USERNAME/following" | grep -o "\"login\": \"$GITHUB_USER\"")
 
-if [[ -z "$FOLLOWING" ]]; then
-    echo -e "\e[1;31mYou are not following @$GITHUB_USER on GitHub. Please follow and try again.\e[0m"
-    exit 1
+    if [[ -z "$FOLLOWING" ]]; then
+        echo -e "\e[1;31mYou are not following @$GITHUB_USER on GitHub. Please follow and try again.\e[0m"
+        exit 1
+    fi
+
+    echo -e "\e[1;32mVerified! You follow @$GITHUB_USER. Installing SCORFY-Termux...\e[0m"
 fi
-
-echo -e "\e[1;32mVerified! You follow @$GITHUB_USER. Installing SCORFY-Termux...\e[0m"
 
 # Update and install dependencies
 pkg update -y && pkg upgrade -y
